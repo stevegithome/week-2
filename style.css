@@ -1,0 +1,165 @@
+:root {
+  --bg: #07111f;
+  --bg-accent: #0d1b2f;
+  --surface: rgba(10, 18, 32, 0.72);
+  --surface-border: rgba(255, 255, 255, 0.14);
+  --text: #f4f7fb;
+  --muted: #aab8d0;
+  --highlight: #7cf5d2;
+  --highlight-strong: #3ad6ff;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI Variable Display", "Avenir Next", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(58, 214, 255, 0.2), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(124, 245, 210, 0.18), transparent 28%),
+    linear-gradient(135deg, var(--bg) 0%, var(--bg-accent) 100%);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.7;
+  animation: float 10s ease-in-out infinite;
+}
+
+.hero__glow--one {
+  width: 20rem;
+  height: 20rem;
+  top: 10%;
+  left: 12%;
+  background: rgba(58, 214, 255, 0.22);
+}
+
+.hero__glow--two {
+  width: 16rem;
+  height: 16rem;
+  right: 10%;
+  bottom: 12%;
+  background: rgba(124, 245, 210, 0.2);
+  animation-delay: -3s;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 42rem);
+  padding: 3rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 28px;
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: rise 0.9s ease-out both;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--highlight);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  max-width: 32rem;
+  margin: 1.25rem auto 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.95rem 1.5rem;
+  font: inherit;
+  font-weight: 700;
+  color: #04111c;
+  background: linear-gradient(135deg, var(--highlight) 0%, var(--highlight-strong) 100%);
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(58, 214, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(58, 214, 255, 0.35);
+}
+
+.message {
+  min-height: 1.5rem;
+  margin: 1rem 0 0;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 2.25rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .hero__glow--one {
+    left: -10%;
+  }
+
+  .hero__glow--two {
+    right: -8%;
+  }
+}
