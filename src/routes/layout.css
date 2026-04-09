@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+:root {
+	--bg: #07111f;
+	--bg-accent: #0d1b2f;
+	--surface: rgb(10 18 32 / 72%);
+	--surface-border: rgb(255 255 255 / 14%);
+	--text: #f4f7fb;
+	--muted: #aab8d0;
+	--highlight: #7cf5d2;
+	--highlight-strong: #3ad6ff;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	font-family: 'Segoe UI Variable Display', 'Avenir Next', 'Trebuchet MS', sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top left, rgb(58 214 255 / 20%), transparent 32%),
+		radial-gradient(circle at bottom right, rgb(124 245 210 / 18%), transparent 28%),
+		linear-gradient(135deg, var(--bg) 0%, var(--bg-accent) 100%);
+}
+
+.surface-card {
+	background: var(--surface);
+	backdrop-filter: blur(18px);
+}
+
+.ambient-orb {
+	position: absolute;
+	border-radius: 9999px;
+	filter: blur(20px);
+	opacity: 0.7;
+	animation: float 10s ease-in-out infinite;
+}
+
+.ambient-orb--one {
+	top: 10%;
+	left: 12%;
+	height: 20rem;
+	width: 20rem;
+	background: rgb(58 214 255 / 22%);
+}
+
+.ambient-orb--two {
+	right: 10%;
+	bottom: 12%;
+	height: 16rem;
+	width: 16rem;
+	background: rgb(124 245 210 / 20%);
+	animation-delay: -3s;
+}
+
+.animate-rise {
+	animation: rise 0.9s ease-out both;
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(0, -18px, 0);
+	}
+}
+
+@media (width <= 40rem) {
+	.ambient-orb--one {
+		left: -10%;
+	}
+
+	.ambient-orb--two {
+		right: -8%;
+	}
+}

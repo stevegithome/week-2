@@ -1,0 +1,52 @@
+<script lang="ts">
+	const greetings = [
+		'Welcome to your new website.',
+		'Hello from SvelteKit and Tailwind.',
+		'Fresh, simple, and ready to customize.',
+		'You now have a modern static starter page.'
+	];
+
+	let greetingIndex = $state(0);
+	const message = $derived(greetings[greetingIndex]);
+
+	function cycleGreeting() {
+		greetingIndex = (greetingIndex + 1) % greetings.length;
+	}
+</script>
+
+<svelte:head>
+	<title>Hello World | SvelteKit Starter</title>
+	<meta
+		name="description"
+		content="A static SvelteKit starter configured for Tailwind, GitHub Pages, and VS Code Dev Containers."
+	/>
+</svelte:head>
+
+<main class="relative grid min-h-screen place-items-center overflow-hidden px-6 py-12">
+	<div class="ambient-orb ambient-orb--one"></div>
+	<div class="ambient-orb ambient-orb--two"></div>
+
+	<section
+		class="surface-card animate-rise relative w-full max-w-3xl rounded-[28px] border border-white/15 p-8 text-center shadow-2xl md:p-12"
+	>
+		<p class="mb-4 text-xs font-semibold tracking-[0.22em] text-[var(--highlight)] uppercase">
+			Static SvelteKit Demo
+		</p>
+		<h1 class="text-5xl font-black tracking-[-0.05em] md:text-7xl">Hello, World.</h1>
+		<p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-[var(--muted)] md:text-lg">
+			A clean, modern starter page rebuilt in SvelteKit with Tailwind CSS, ready for GitHub Pages
+			and a VS Code Dev Container workflow.
+		</p>
+
+		<div class="mt-10">
+			<button
+				class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--highlight)_0%,var(--highlight-strong)_100%)] px-6 py-4 text-sm font-extrabold tracking-[0.03em] text-slate-950 shadow-[0_12px_32px_rgba(58,214,255,0.3)] transition duration-200 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_40px_rgba(58,214,255,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--highlight)]"
+				type="button"
+				onclick={cycleGreeting}
+			>
+				Change greeting
+			</button>
+			<p class="mt-4 min-h-6 text-base text-[var(--text)]">{message}</p>
+		</div>
+	</section>
+</main>
